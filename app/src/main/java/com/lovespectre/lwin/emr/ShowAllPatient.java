@@ -75,7 +75,7 @@ public class ShowAllPatient extends ListActivity {
         ListView lv = getListView();
 
 
-        // on seleting single product
+        // on seleting single patient
         // launching Edit Product Screen
         lv.setOnItemClickListener(new OnItemClickListener() {
 
@@ -98,14 +98,14 @@ public class ShowAllPatient extends ListActivity {
 
     }
 
-    // Response from Edit Product Activity
+    // Response from UpdatePatient Activity
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         // if result code 100
         if (resultCode == 100) {
             // if result code 100 is received
-            // means user edited/deleted product
+            // means user edited/deleted patient
             // reload this screen again
             Intent intent = getIntent();
             finish();
@@ -128,7 +128,7 @@ public class ShowAllPatient extends ListActivity {
         }
 
         /**
-         * getting All products from url
+         * getting All patients from url
          * */
         protected String doInBackground(String... args) {
             // Building Parameters
@@ -173,8 +173,8 @@ public class ShowAllPatient extends ListActivity {
                         patientList.add(map);
                     }
                 } else {
-                    // no products found
-                    // Launch Add New product Activity
+                    // no patient found
+                    // Launch Add New patient Activity
                     Intent i = new Intent(getApplicationContext(),
                             NewPatient.class);
                     // Closing all previous activities
@@ -192,7 +192,7 @@ public class ShowAllPatient extends ListActivity {
          * After completing background task Dismiss the progress dialog
          * **/
         protected void onPostExecute(String file_url) {
-            // dismiss the dialog after getting all products
+            // dismiss the dialog after getting all patients
 
             // updating UI from Background Thread
             runOnUiThread(new Runnable() {

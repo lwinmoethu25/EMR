@@ -82,7 +82,7 @@ public class NewPatient extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                // creating new product in background thread
+                // creating new patient in background thread
                 new CreateNewPatient().execute();
             }
         });

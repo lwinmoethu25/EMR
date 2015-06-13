@@ -48,13 +48,13 @@ public class UpdatePatient extends Activity {
     JsonParser jsonParser = new JsonParser();
 
 
-    // single product url
+    // single patient url
     private static final String url_patient_detials = "http://192.168.43.48/openemr/get_patient_details.php";
 
-    // url to update product
+    // url to update patient
     private static final String url_update_patient = "http://192.168.43.48/openemr/update_patient.php";
 
-    // url to delete product
+    // url to delete patient
     private static final String url_delete_patient = "http://192.168.43.48/openemr/delete_patient.php";
 
     // JSON Node names
@@ -77,14 +77,14 @@ public class UpdatePatient extends Activity {
         btnSave = (ImageButton) findViewById(R.id.btnSave);
         btnDelete = (ImageButton) findViewById(R.id.btnDelete);
 
-        // getting product details from intent
+        // getting patient details from intent
         Intent i = getIntent();
 
-        // getting product id (pid) from intent
+        // getting patient id (pid) from intent
         id = i.getStringExtra(TAG_PID);
         Log.i("Get From Intent:",TAG_PID);
 
-        // Getting complete product details in background thread
+        // Getting complete patient details in background thread
         new GetPatientDetails().execute();
 
         // save button click event
@@ -92,7 +92,7 @@ public class UpdatePatient extends Activity {
 
             @Override
             public void onClick(View arg0) {
-                // starting background task to update product
+                // starting background task to update patient
 
             new SavePatientDetails().execute();
             }
@@ -113,7 +113,7 @@ public class UpdatePatient extends Activity {
                 alert.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        // deleting product in background thread
+                        // deleting patient in background thread
                         new DeletePatient().execute();
                         dialog.dismiss();
                     }
@@ -149,7 +149,7 @@ public class UpdatePatient extends Activity {
         }
 
         /**
-         * Getting product details in background thread
+         * Getting patient details in background thread
          * */
         protected String doInBackground(String... params) {
 
@@ -163,8 +163,8 @@ public class UpdatePatient extends Activity {
                         List<NameValuePair> params = new ArrayList<NameValuePair>();
                         params.add(new BasicNameValuePair("id",id));
 
-                        // getting product details by making HTTP request
-                        // Note that product details url will use GET request
+                        // getting patient details by making HTTP request
+                        // Note that patient details url will use GET request
                         JSONObject json = jsonParser.makeHttpRequest(url_patient_detials, "GET", params);
 
                         // check your log for json response
@@ -173,13 +173,13 @@ public class UpdatePatient extends Activity {
                         // json success tag
                         success = json.getInt(TAG_SUCCESS);
                         if (success == 1) {
-                            // successfully received product details
+                            // successfully received patient details
                             JSONArray patientObj = json.getJSONArray(TAG_PATIENT); // JSON Array
 
-                            // get first product object from JSON Array
+                            // get first patient object from JSON Array
                             JSONObject patient = patientObj.getJSONObject(0);
 
-                            // product with this pid found
+                            // patient with this pid found
                             // Edit Text
                             fName = (EditText) findViewById(R.id.upfirstName);
                             lName = (EditText) findViewById(R.id.upLastName);
@@ -191,7 +191,7 @@ public class UpdatePatient extends Activity {
                             city.setText(patient.getString(TAG_CITY));
 
                         }else{
-                            // product with pid not found
+                            // patient with pid not found
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
@@ -231,7 +231,7 @@ public class UpdatePatient extends Activity {
         }
 
         /**
-         * Saving product
+         * Saving patient
          * */
         protected String doInBackground(String... args) {
 
@@ -248,7 +248,7 @@ public class UpdatePatient extends Activity {
             params.add(new BasicNameValuePair(TAG_CITY,  upcity));
 
             // sending modified data through http request
-            // Notice that update product url accepts POST method
+            // Notice that update patient url accepts POST method
             JSONObject json = jsonParser.makeHttpRequest(url_update_patient,"POST", params);
 
             // check json success tag
