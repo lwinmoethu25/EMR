@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- FName Label -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:text="First Name"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    
+    <!-- Input FName -->
+	<EditText
+        android:id="@+id/firstName"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="5dip"
+	    android:layout_marginBottom="15dip"
+	    android:singleLine="true"/>
+
+
+
+    <!-- LName Label -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:text="Last Name"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+
+    <!-- Input LName -->
+    <EditText
+        android:id="@+id/lastName"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dip"
+        android:layout_marginBottom="15dip"
+        android:singleLine="true"/>
+
+
+
+
+    <!-- City Label -->
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:paddingTop="10dip"
+        android:text="City"
+        android:textColor="@android:color/primary_text_light"
+        android:textSize="20sp"
+        android:textStyle="bold"/>
+    
+    <!-- Input city -->
+	<EditText
+        android:id="@+id/inputCity"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_margin="5dip"
+	    android:layout_marginBottom="15dip"
+        android:gravity="top"
+        android:singleLine="true"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date of Birth"
+        android:textColor="@android:color/primary_text_light"
+        android:textStyle="bold"
+        android:paddingLeft="10dip"
+        android:paddingRight="10dip"
+        android:textSize="20sp"/>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dip"
+        android:weightSum="4"
+        android:layout_margin="5dip"
+        android:layout_marginBottom="15dip">
+
+        <!-- Input Date of Birthl -->
+        <EditText
+            android:id="@+id/showdate"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="3"
+            android:editable="true"
+            android:onClick="datepicker"
+            android:singleLine="true" />
+        <ImageButton
+            android:layout_weight="1"
+            android:id="@+id/calender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/showdate"
+            android:cropToPadding="true"
+            android:onClick="datepicker"
+            android:src="@drawable/calendar_check"
+            android:background="@android:color/transparent"/>
+
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="5dip"
+        android:layout_marginBottom="15dip">
+
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/male"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="onRadioButtonClicked"
+                android:text="@string/female"
+                android:textSize="17sp"
+                android:textStyle="bold"/>
+        </RadioGroup>
+    </LinearLayout>
+
+	<!--Button Create Product -->
+	<Button android:id="@+id/btnCreate"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:paddingTop="10dip"
+        android:text="Create Patient"
+        android:layout_margin="5dip"
+        android:layout_marginBottom="15dip"/>
+-->
+</LinearLayout>
