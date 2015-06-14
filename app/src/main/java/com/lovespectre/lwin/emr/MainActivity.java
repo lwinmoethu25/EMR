@@ -96,7 +96,7 @@ public class MainActivity extends Activity{
                             dialog.cancel();
                         }
                     });
-            AlertDialog alert = builder.create();
+            AlertDialogPro alert = builder.create();
             alert.show();
 
         } else {

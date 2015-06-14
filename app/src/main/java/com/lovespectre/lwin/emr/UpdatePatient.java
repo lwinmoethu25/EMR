@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.alertdialogpro.AlertDialogPro;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
@@ -107,8 +109,9 @@ public class UpdatePatient extends Activity {
                 fname=fName.getText().toString();
                 lname=lName.getText().toString();
 
-                AlertDialog.Builder alert=new AlertDialog.Builder(UpdatePatient.this);
+                AlertDialogPro.Builder alert=new AlertDialogPro.Builder(UpdatePatient.this);
                 alert.setTitle("Delete Patient");
+                alert.setIcon(R.drawable.ic_delete_black_36dp);
                 alert.setMessage("Are you sure to delete "+fname+" "+lname+ "?");
                 alert.setPositiveButton("Yes",new DialogInterface.OnClickListener() {
                     @Override
