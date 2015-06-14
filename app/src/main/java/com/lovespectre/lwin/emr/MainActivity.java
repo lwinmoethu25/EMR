@@ -11,6 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.alertdialogpro.AlertDialogPro;
+
 
 public class MainActivity extends Activity{
 
@@ -76,28 +78,24 @@ public class MainActivity extends Activity{
     @Override
     public void onBackPressed() {
         if (isTaskRoot()) {
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            TextView conform = new TextView(this);
-            conform.setText("Are you sure you want to exit?");
-            conform.setGravity(Gravity.CENTER_HORIZONTAL);
-            conform.setTextSize(18);
-            conform.setPadding(10, 15, 15, 10);
-            builder.setView(conform)
-                    .setCancelable(false)
-                    .setPositiveButton("Yes",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,
-                                                    int id) {
-                                    MainActivity.super.onBackPressed();
-                                }
-                            })
-                    .setNegativeButton("No",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog,
-                                                    int id) {
-                                    dialog.cancel();
-                                }
-                            });
+            AlertDialogPro.Builder builder = new AlertDialogPro.Builder(this);
+            builder.setTitle("Exit")
+                    .setIcon(R.drawable.ic_exit_to_app_black_36dp)
+                    .setMessage("Are you sure to exit?")
+                    .setPositiveButton("Yes",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            MainActivity.super.onBackPressed();
+
+                        }
+                    })
+                    .setNegativeButton("No",new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.cancel();
+                        }
+                    });
             AlertDialog alert = builder.create();
             alert.show();
 
