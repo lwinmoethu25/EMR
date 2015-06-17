@@ -1,8 +1,10 @@
 package com.lovespectre.lwin.emr;
 
 
+import android.app.Activity;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -18,6 +20,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.lovespectre.lwin.custom.MyBaseAdapter;
+import com.lovespectre.lwin.custom.ShowItem;
+
 import org.apache.http.NameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -30,7 +35,7 @@ import java.util.List;
 /**
  * Created by lwin on 5/29/15.
  */
-public class ShowAllPatient extends ListActivity {
+public class ShowAllPatient extends Activity {
 
 
     //Progress Dialog
@@ -39,7 +44,7 @@ public class ShowAllPatient extends ListActivity {
     //Creating JSON Parser object
     JsonParser jParser = new JsonParser();
 
-    ArrayList<HashMap<String, String>> patientList;
+   // ArrayList<HashMap<String, String>> patientList;
     private static String ip="192.168.43.48";
     //url to get all patient list
     private static String url_all_patient = "http://"+ip+"/openemr/get_all_patient.php";
@@ -51,11 +56,17 @@ public class ShowAllPatient extends ListActivity {
     private static final String TAG_PID = "id";
     private static final String TAG_FNAME = "fname";
     private static final String TAG_LNAME = "lname";
+    private static final String TAG_CITY  = "city";
 
        //patient JSONArray
     JSONArray patient = null;
 
     EditText inputSearch;
+
+    ListView listView;
+    Context context=ShowAllPatient.this;
+    ArrayList<ShowItem> myList=new ArrayList<ShowItem>();
+    private MyBaseAdapter adapter;
 
       @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,14 +75,34 @@ public class ShowAllPatient extends ListActivity {
 
 
         //Hashmap for ListView
-        patientList = new ArrayList<HashMap<String, String>>();
+        //patientList = new ArrayList<HashMap<String, String>>();
 
 
 
         //Loading patients in Background Thread
         new LoadAllPatient().execute();
 
-       // Get listview
+        ListView lv=(ListView) findViewById(R.id.list);
+        lv.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                // getting values from selected ListItem
+                String pid = ((TextView) view.findViewById(R.id.pid)).getText().toString();
+
+                // Starting new intent
+                Intent in = new Intent(getApplicationContext(),UpdatePatient.class);
+
+                // sending pid to next activity
+                in.putExtra(TAG_PID, pid);
+
+                // starting new activity and expecting some response back
+                startActivityForResult(in, 100);
+
+            }
+        });
+
+       /*// Get listview
         ListView lv = getListView();
 
 
@@ -94,7 +125,7 @@ public class ShowAllPatient extends ListActivity {
                 // starting new activity and expecting some response back
                 startActivityForResult(in, 100);
             }
-        });
+        });*/
 
     }
 
@@ -123,7 +154,7 @@ public class ShowAllPatient extends ListActivity {
             pDialog = new ProgressDialog(ShowAllPatient.this);
             pDialog.setMessage("Loading patients. Please wait...");
             pDialog.setIndeterminate(false);
-            pDialog.setCancelable(false);
+            pDialog.setCancelable(true);
             pDialog.show();
         }
 
@@ -156,11 +187,19 @@ public class ShowAllPatient extends ListActivity {
                         String id = c.getString(TAG_PID);
                         String fname = c.getString(TAG_FNAME);
                         String lname = c.getString(TAG_LNAME);
+                        String city  = c.getString(TAG_CITY);
                         Log.i("List Item:"+fname,lname);
 
+                        ShowItem item=new ShowItem();
+                        item.setId(id);
+                        item.setFname(fname);
+                        item.setLname(lname);
+                        item.setCity (city);
+                        myList.add(item);
 
 
-                       // creating new HashMap
+
+                      /* // creating new HashMap
                         HashMap<String, String> map = new HashMap<String, String>();
 
                         // adding each child node to HashMap key => value
@@ -170,7 +209,7 @@ public class ShowAllPatient extends ListActivity {
 
 
                         // adding HashList to ArrayList
-                        patientList.add(map);
+                        patientList.add(map);*/
                     }
                 } else {
                     // no patient found
@@ -198,9 +237,51 @@ public class ShowAllPatient extends ListActivity {
             runOnUiThread(new Runnable() {
                 public void run() {
 
-                   /**
+                    listView=(ListView) findViewById(R.id.list);
+
+                    listView.setAdapter(new MyBaseAdapter(context,myList));
+
+                    inputSearch=(EditText) findViewById(R.id.search);
+                    inputSearch.addTextChangedListener(new TextWatcher() {
+                        @Override
+                        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+                        }
+
+                        @Override
+                        public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                            ArrayList<ShowItem> tempList=new ArrayList<ShowItem>();
+                            String searchString=inputSearch.getText().toString();
+
+                            if(searchString.length()>0){
+                                for(int i=0;i<myList.size();i++){
+                                    String strfname=myList.get(i).getFname();
+                                    String strlname=myList.get(i).getLname();
+                                    String strcity =myList.get(i).getCity();
+                                    if((searchString.equalsIgnoreCase(strfname) || searchString.equalsIgnoreCase(strlname) || searchString.equalsIgnoreCase(strcity)))
+                                    {
+                                        tempList.add(myList.get(i));
+                                    }
+                                }
+                                listView.setAdapter(new MyBaseAdapter(context,tempList));
+                            }else{
+                                listView.setAdapter(new MyBaseAdapter(context,myList));
+                            }
+
+                        }
+
+                        @Override
+                        public void afterTextChanged(Editable s) {
+
+                        }
+                    });
+
+
+/*
+                   *//**
                      * Updating parsed JSON data into ListView
-                    */
+                    *//*
                  ListAdapter adapter = new SimpleAdapter(
                             ShowAllPatient.this, patientList,
                             R.layout.list_item, new String[] { TAG_PID,TAG_FNAME,TAG_LNAME},new int[] { R.id.pid, R.id.fname,R.id.lname});
@@ -256,7 +337,7 @@ public class ShowAllPatient extends ListActivity {
 
 
                         }
-                    });
+                    });*/
                     pDialog.dismiss();
 
                 }

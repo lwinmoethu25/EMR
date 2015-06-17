@@ -21,13 +21,13 @@
         android:orientation="horizontal"
         android:background="@drawable/background_card"
         >
-<!--
-        <ImageButton
+
+        <ImageView
+            android:id="@+id/img"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_face_black"
-            android:background="@android:color/transparent"/>-->
-        <!-- FName Label -->
+            />
+
         <TextView
             android:id="@+id/fname"
             android:layout_gravity="left|center_vertical"
@@ -49,10 +49,16 @@
             android:textColor="@android:color/primary_text_light"
             />
 
-
-
-
     </LinearLayout>
+
+        <TextView
+            android:id="@+id/city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10dip"
+            android:paddingRight="13dp"
+            android:layout_gravity="right"
+            android:textColor="#307D7E"/>
 
 
 

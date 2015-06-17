@@ -125,7 +125,7 @@ public class UpdatePatient extends Activity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        dialog.dismiss();
+                        dialog.cancel();
                     }
                 });
 
