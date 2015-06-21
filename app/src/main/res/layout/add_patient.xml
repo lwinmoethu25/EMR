@@ -4,15 +4,22 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ImageView
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        />
+
+
+    <!--<ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_assignment_ind_black_48dp"
         android:layout_gravity="center"/>
-
+-->
     <!-- FName Label -->
     <TextView
-        android:layout_width="fill_parent"
+        android:layout_width="fill_parent"r
         android:layout_height="wrap_content"
         android:paddingLeft="10dip"
         android:paddingRight="10dip"

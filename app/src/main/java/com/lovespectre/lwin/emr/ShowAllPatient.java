@@ -8,6 +8,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -35,7 +38,7 @@ import java.util.List;
 /**
  * Created by lwin on 5/29/15.
  */
-public class ShowAllPatient extends Activity {
+public class ShowAllPatient extends AppCompatActivity {
 
 
     //Progress Dialog
@@ -73,6 +76,9 @@ public class ShowAllPatient extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.all_patient);
 
+
+          Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+          setSupportActionBar(toolbar);
 
         //Hashmap for ListView
         //patientList = new ArrayList<HashMap<String, String>>();

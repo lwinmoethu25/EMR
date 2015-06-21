@@ -1,17 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/DrawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="7dp">
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@android:color/white">
+    android:background="#ffffff">
 
 
-    <ImageView
+
+    <include
+        android:id="@+id/tool_bar"
+        layout="@layout/tool_bar"
+        />
+
+    <com.lovespectre.lwin.custom.AViewFlipper
+        android:id="@+id/AViewFlipper"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="3dp"
+        android:paddingBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:autoStart="true"
+        android:flipInterval="5000" >
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/crystal2" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/crystal1" />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/crystal3" />
+    </com.lovespectre.lwin.custom.AViewFlipper>
+
+
+
+   <!-- <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:src="@drawable/logo"
-        android:layout_marginTop="30dp"/>
+        android:layout_marginTop="30dp"/>-->
 
     <EditText
         android:id="@+id/iptxt"
@@ -20,13 +70,12 @@
         android:hint="  Enter IP Address:"
         android:singleLine="true"
         android:background="@drawable/textbox_normal"
-        android:drawablePadding="6dp"
-        android:paddingRight="8dp"
         android:paddingLeft="3dp"
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         />
 
     <LinearLayout
@@ -39,8 +88,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="New Patient"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="8dp"
             android:layout_weight="1"
             />
 
@@ -48,20 +97,31 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Show Patient"
-
-            android:layout_marginRight="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"
             android:layout_weight="1"
             />
 
+        </LinearLayout>
     </LinearLayout>
-<!--
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_circle_black_48dp"
-        android:background="@android:color/transparent"
-        android:layout_gravity="right" />-->
 
+    <android.support.v7.widget.RecyclerView
 
-</LinearLayout>
+        android:id="@+id/RecyclerView"
+        android:layout_width="320dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="left"
+        android:background="#ffffff"
+        android:scrollbars="vertical">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <!--
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_add_circle_black_48dp"
+            android:background="@android:color/transparent"
+            android:layout_gravity="right" />-->
+
+</android.support.v4.widget.DrawerLayout>

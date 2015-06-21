@@ -7,14 +7,18 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.Image;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
@@ -38,7 +42,7 @@ import java.util.List;
 /**
  * Created by lwin on 5/29/15.
  */
-public class NewPatient extends ActionBarActivity {
+public class NewPatient extends AppCompatActivity {
 
     EditText firstName;
     EditText lastName;
@@ -53,13 +57,13 @@ public class NewPatient extends ActionBarActivity {
     private ProgressDialog pDialog;
 
 
-    private
+
 
     String addip;
-    String IP="";
     // url to create new patient
-    private static String url_create_patient = "http://192.168.43.48/openemr/create_patient.php";
 
+
+    private static String url_create_patient;
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
 
@@ -70,6 +74,14 @@ public class NewPatient extends ActionBarActivity {
 
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
+        setSupportActionBar(toolbar);
+
+        SharedPreferences ip_setting= getSharedPreferences("ip",Activity.MODE_PRIVATE);
+        addip=ip_setting.getString("Ip_Address","");
+
+        url_create_patient = "http://"+addip+"/openemr/create_patient.php";
 
         // Edit Text
         firstName = (EditText) findViewById(R.id.firstName);

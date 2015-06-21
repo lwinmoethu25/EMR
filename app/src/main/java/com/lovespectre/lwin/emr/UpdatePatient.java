@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +30,7 @@ import java.util.List;
 /**
  * Created by lwin on 5/30/15.
  */
-public class UpdatePatient extends Activity {
+public class UpdatePatient extends AppCompatActivity {
 
 
 

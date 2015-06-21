@@ -5,4 +5,6 @@
     <string name="action_settings">Settings</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
+    <string name="openDrawer">Open</string>
+    <string name="closeDrawer">Close</string>
 </resources>

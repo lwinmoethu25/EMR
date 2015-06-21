@@ -3,6 +3,6 @@
 
 <resources>
 
-    <color name="ColorPrimary">#FF5722</color>
-    <color name="ColorPrimaryDark">#E64A19</color>
+    <color name="ColorPrimary">#4395a1</color>
+    <color name="ColorPrimaryDark">#ff1d86a1</color>
 </resources>

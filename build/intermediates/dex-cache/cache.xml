@@ -2,11 +2,11 @@
 <items version="2" >
 
     <item
-        jar="/home/lwin/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.0/support-annotations-22.1.0.jar"
+        jar="/home/lwin/EMR/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.0/jars/libs/internal_impl-22.1.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="281bc6c58ecb3644c23fbc5ee0452019f67b4d5d">
-        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.0-eabe1849adc735b6e0c97c907ba8b7c50e0957a4.jar" />
+        sha1="025cb89f2896c63200ff4c2e6c467a95691d880a">
+        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.0-58a78f3c49cae558764eb5d87c48aefb2931f519.jar" />
     </item>
     <item
         jar="/home/lwin/EMR/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.0/jars/classes.jar"
@@ -16,25 +16,11 @@
         <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/classes-c534568237c537bcacce6ac74c0e0fe0ebe69ef4.jar" />
     </item>
     <item
-        jar="/home/lwin/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jar="/home/lwin/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.1.0/support-annotations-22.1.0.jar"
         jumboMode="false"
         revision="22.0.1"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/library-2.4.0-642d27715a14e271d73095cd647303ca589294bf.jar" />
-    </item>
-    <item
-        jar="/home/lwin/EMR/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.1.0/jars/libs/internal_impl-22.1.0.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="025cb89f2896c63200ff4c2e6c467a95691d880a">
-        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/internal_impl-22.1.0-58a78f3c49cae558764eb5d87c48aefb2931f519.jar" />
-    </item>
-    <item
-        jar="/home/lwin/EMR/app/build/intermediates/exploded-aar/com.github.fengdai/alertdialogpro-core/0.2.3/jars/classes.jar"
-        jumboMode="false"
-        revision="22.0.1"
-        sha1="e06255ce1023c60f103bbca1e8fe6981c849058d">
-        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/classes-d41cfc7b0fc3343b7699291514cf3ebadfddc324.jar" />
+        sha1="281bc6c58ecb3644c23fbc5ee0452019f67b4d5d">
+        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/support-annotations-22.1.0-eabe1849adc735b6e0c97c907ba8b7c50e0957a4.jar" />
     </item>
     <item
         jar="/home/lwin/EMR/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.1.0/jars/classes.jar"
@@ -49,6 +35,34 @@
         revision="22.0.1"
         sha1="87973a148a7113f9a4eef799f22d0341d150ea33">
         <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/classes-cf8ec483d5d6d00145f0eab233fa52af95b5dfef.jar" />
+    </item>
+    <item
+        jar="/home/lwin/EMR/app/build/intermediates/exploded-aar/com.github.fengdai/alertdialogpro-core/0.2.3/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e06255ce1023c60f103bbca1e8fe6981c849058d">
+        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/classes-d41cfc7b0fc3343b7699291514cf3ebadfddc324.jar" />
+    </item>
+    <item
+        jar="/home/lwin/EMR/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.2/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4796f18d3750bf2bfa078407a94a7f9db35b440d">
+        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/classes-f1c64629ebc61f92b7ff1dcd3ac41dab0271f6af.jar" />
+    </item>
+    <item
+        jar="/home/lwin/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/library-2.4.0-642d27715a14e271d73095cd647303ca589294bf.jar" />
+    </item>
+    <item
+        jar="/home/lwin/EMR/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/1.2.1/jars/classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4b868b833b0887aa48c4e581558eef4f1196f6a2">
+        <dex dex="/home/lwin/EMR/app/build/intermediates/pre-dexed/debug/classes-f649444c8381ff378ec0c26acfb35b2171a6fc87.jar" />
     </item>
 
 </items>

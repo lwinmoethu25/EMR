@@ -18,9 +18,10 @@
         </activity>
 
         <!-- Add Product Activity -->
-        <activity android:name=".NewPatient" android:label="Add New Patient"
-                  android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".NewPatient" android:label="Add New Patient">
         </activity>
+
+
 
         <!-- All Patient Activity -->
         <activity android:name=".ShowAllPatient" android:label=" Patient List">
