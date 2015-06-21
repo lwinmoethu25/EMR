@@ -57,13 +57,13 @@ public class NewPatient extends AppCompatActivity {
     private ProgressDialog pDialog;
 
 
-
+    private static String url_create_patient = "http://192.168.43.48/openemr/create_patient.php";
 
     String addip;
     // url to create new patient
 
 
-    private static String url_create_patient;
+   
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
 
@@ -81,7 +81,7 @@ public class NewPatient extends AppCompatActivity {
         SharedPreferences ip_setting= getSharedPreferences("ip",Activity.MODE_PRIVATE);
         addip=ip_setting.getString("Ip_Address","");
 
-        url_create_patient = "http://"+addip+"/openemr/create_patient.php";
+
 
         // Edit Text
         firstName = (EditText) findViewById(R.id.firstName);
