@@ -25,7 +25,7 @@
 
     <EditText
         android:id="@+id/search"
-        android:drawableLeft="@drawable/search"
+        android:drawableLeft="@drawable/ic_search_black_18dp"
         android:layout_width="match_parent"
         android:background="@drawable/textbox_normal"
         android:paddingLeft="8dp"

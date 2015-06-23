@@ -2,7 +2,7 @@
     <string name="app_name">EMR</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">EMR Settings</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
     <string name="openDrawer">Open</string>

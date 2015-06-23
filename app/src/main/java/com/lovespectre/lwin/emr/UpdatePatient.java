@@ -6,9 +6,11 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -52,13 +54,13 @@ public class UpdatePatient extends AppCompatActivity {
 
 
     // single patient url
-    private static final String url_patient_detials = "http://192.168.43.48/openemr/get_patient_details.php";
+    private static String url_patient_detials;
 
     // url to update patient
-    private static final String url_update_patient = "http://192.168.43.48/openemr/update_patient.php";
+    private static String url_update_patient;
 
     // url to delete patient
-    private static final String url_delete_patient = "http://192.168.43.48/openemr/delete_patient.php";
+    private static String url_delete_patient;
 
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
@@ -75,6 +77,16 @@ public class UpdatePatient extends AppCompatActivity {
         setContentView(R.layout.edit_patient);
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
+
+
+        final SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(this);
+        final String ipAddress=prefs.getString("IP",null);
+
+        url_patient_detials = "http://"+ipAddress+"/openemr/get_patient_details.php";
+
+        url_update_patient  = "http://"+ipAddress+"/openemr/update_patient.php";
+
+        url_delete_patient  = "http://"+ipAddress+"/openemr/delete_patient.php";
 
         // save button
         btnSave = (ImageButton) findViewById(R.id.btnSave);

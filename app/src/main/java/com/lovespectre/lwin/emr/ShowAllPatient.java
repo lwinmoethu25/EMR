@@ -6,8 +6,10 @@ import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -47,10 +49,8 @@ public class ShowAllPatient extends AppCompatActivity {
     //Creating JSON Parser object
     JsonParser jParser = new JsonParser();
 
-   // ArrayList<HashMap<String, String>> patientList;
-    private static String ip="192.168.43.48";
     //url to get all patient list
-    private static String url_all_patient = "http://"+ip+"/openemr/get_all_patient.php";
+    private static String url_all_patient;
 
 
     //JSON Node names
@@ -69,7 +69,7 @@ public class ShowAllPatient extends AppCompatActivity {
     ListView listView;
     Context context=ShowAllPatient.this;
     ArrayList<ShowItem> myList=new ArrayList<ShowItem>();
-    private MyBaseAdapter adapter;
+
 
       @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,8 +80,10 @@ public class ShowAllPatient extends AppCompatActivity {
           Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
           setSupportActionBar(toolbar);
 
-        //Hashmap for ListView
-        //patientList = new ArrayList<HashMap<String, String>>();
+          final SharedPreferences prefs= PreferenceManager.getDefaultSharedPreferences(this);
+          final String ipAddress=prefs.getString("IP",null);
+
+          url_all_patient="http://"+ipAddress+"/openemr/get_all_patient.php";
 
 
 

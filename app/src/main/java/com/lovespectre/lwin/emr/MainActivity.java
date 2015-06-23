@@ -6,6 +6,8 @@ import android.app.FragmentManager;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
@@ -16,6 +18,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.Gravity;
@@ -40,17 +44,32 @@ public class MainActivity extends ActionBarActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
 
-        final String ip=((EditText) findViewById(R.id.iptxt)).getText().toString();
+        EditText ip=(EditText) findViewById(R.id.iptxt);
+        ip.setText(prefs.getString("IP",null));
 
-        final SharedPreferences ip_setting= getSharedPreferences("ip",Activity.MODE_PRIVATE);
-        final SharedPreferences.Editor editor=ip_setting.edit();
-        editor.putString("Ip_Address",ip);
-        editor.commit();
+        ip.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+                prefs.edit().putString("IP",s.toString()).commit();
+            }
+        });
 
 
 
-        String TITLES[] = {"Home", "New Patient", "Show Patient", "Message", "Setting", "Exit"};
+        final String TITLES[] = {"Home", "New Patient", "Show Patient", "Message", "Setting", "Exit"};
         int ICONS[] = {R.drawable.ic_home_black_24dp, R.drawable.ic_person_add_black_24dp, R.drawable.ic_person_black_24dp, R.drawable.ic_message_black_24dp,
                 R.drawable.ic_settings_black_24dp, R.drawable.ic_exit_to_app_black_36dp};
 
@@ -59,7 +78,7 @@ public class MainActivity extends ActionBarActivity{
         int PROFILE = R.drawable.logo;
         final DrawerLayout Drawer;
         ActionBarDrawerToggle mDrawerToggle;
-        RecyclerView mRecyclerView;
+        final RecyclerView mRecyclerView;
         RecyclerView.Adapter mAdapter;
         RecyclerView.LayoutManager mLayoutManager;
 
@@ -93,10 +112,16 @@ public class MainActivity extends ActionBarActivity{
 
 
                 if(child!=null && mGestureDetector.onTouchEvent(motionEvent)){
-                    Drawer.closeDrawers();
+
+                    int position=mRecyclerView.getChildPosition(child);
+
+
+                   // Drawer.closeDrawers();
                     //Toast.makeText(MainActivity.this, "The Item Clicked is: " + recyclerView.getChildPosition(child), Toast.LENGTH_SHORT).show();
                     onTouchDrawer(recyclerView.getChildPosition(child));
                     return true;
+
+
 
                 }
                 return false;
@@ -174,17 +199,22 @@ public class MainActivity extends ActionBarActivity{
                 break;
 
             case 2:
-                Intent intent2=new Intent(this,NewPatient.class);
-                startActivity(intent2);
+                Intent intent1=new Intent(this,NewPatient.class);
+                startActivity(intent1);
                 break;
 
             case 3:
-                Intent intent3 = new Intent(this, ShowAllPatient.class);
-                startActivity(intent3);
+                Intent intent2 = new Intent(this, ShowAllPatient.class);
+                startActivity(intent2);
                 break;
 
             case 4:
                 openFragment(new Message());
+                break;
+
+            case 5:
+                Intent intent3=new Intent(this,Preferences.class);
+                startActivity(intent3);
                 break;
 
             case 6:
@@ -208,8 +238,13 @@ public class MainActivity extends ActionBarActivity{
 
     }
 
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
 
-  /*  @Override
+    /*  @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -233,6 +268,8 @@ public class MainActivity extends ActionBarActivity{
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+
+            startActivity(new Intent(this,Preferences.class));
             return true;
         }
 

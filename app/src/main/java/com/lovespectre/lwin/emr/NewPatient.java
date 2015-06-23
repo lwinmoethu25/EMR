@@ -56,16 +56,11 @@ public class NewPatient extends AppCompatActivity {
     // Progress Dialog
     private ProgressDialog pDialog;
 
-
-    private static String url_create_patient = "http://192.168.43.48/openemr/create_patient.php";
-
-    String addip;
-    // url to create new patient
-
-
-   
     // JSON Node names
     private static final String TAG_SUCCESS = "success";
+
+    private static String url_create_patient;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,9 +73,11 @@ public class NewPatient extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.tool_bar);
         setSupportActionBar(toolbar);
 
-        SharedPreferences ip_setting= getSharedPreferences("ip",Activity.MODE_PRIVATE);
-        addip=ip_setting.getString("Ip_Address","");
+        final SharedPreferences prefs=PreferenceManager.getDefaultSharedPreferences(this);
+        final String ipAddress=prefs.getString("IP",null);
 
+        // url to create new patient
+        url_create_patient = "http://"+ipAddress+"/openemr/create_patient.php";
 
 
         // Edit Text
@@ -168,6 +165,7 @@ public class NewPatient extends AppCompatActivity {
                 params.add(new BasicNameValuePair("city", city));
                 // getting JSON Object
                 // Note that create product url accepts POST method
+
                 Log.i("Create Response", url_create_patient+fname+lname+city+dob+sex);
                 JSONObject json = jsonParser.makeHttpRequest(url_create_patient, "POST", params);
 

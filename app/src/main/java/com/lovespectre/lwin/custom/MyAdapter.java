@@ -1,6 +1,8 @@
 package com.lovespectre.lwin.custom;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +11,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.lovespectre.lwin.emr.Home;
+import com.lovespectre.lwin.emr.Message;
+import com.lovespectre.lwin.emr.NewPatient;
 import com.lovespectre.lwin.emr.R;
+import com.lovespectre.lwin.emr.ShowAllPatient;
 
 /**
  * Created by lwin on 6/21/15.
@@ -32,7 +38,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
     // Creating a ViewHolder which extends the RecyclerView View Holder
     // ViewHolder are used to to store the inflated views in order to recycle them
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder{
         int Holderid;
 
         TextView textView;
@@ -47,7 +53,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
             super(itemView);
             contxt= c;
             itemView.setClickable(true);
-            itemView.setOnClickListener(this);
+            //itemView.setOnClickListener(this);
 
 
 
@@ -69,14 +75,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         }
 
 
-        @Override
+       /* @Override
         public void onClick(View v) {
 
-            Toast.makeText(contxt,"Enter into "+getPosition(),Toast.LENGTH_SHORT).show();
-
-        }
+          Toast.makeText(contxt,"Enter into "+getPosition(),Toast.LENGTH_SHORT).show();
+        }*/
     }
-
 
 
     public MyAdapter(String Titles[], int Icons[], String Name, String Email, int Profile,Context passedContext){ // MyAdapter Constructor with titles and icons parameter
