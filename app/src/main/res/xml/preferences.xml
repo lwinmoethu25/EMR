@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <PreferenceCategory android:title="IP SETTING">
+
+        <EditTextPreference
+            android:title="IP Address"
+            android:summary="Enter IP Address of your computer"
+            android:key="IP">
+        </EditTextPreference>
+
+
+    </PreferenceCategory>
+
+</PreferenceScreen>
